@@ -4,14 +4,15 @@ from torch.nn.modules.module import Module
 
 
 class CutMixCrossEntropyLoss(Module):
-    def __init__(self, size_average=True):
+    def __init__(self, size_average=True, device='cuda:0'):
         super().__init__()
         self.size_average = size_average
+        self.device = device
 
     def forward(self, input, target):
         if len(target.size()) == 1:
             target = torch.nn.functional.one_hot(target, num_classes=input.size(-1))
-            target = target.float().cuda()
+            target = target.float().to(self.device)
         return cross_entropy(input, target, self.size_average)
 
 
