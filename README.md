@@ -25,6 +25,7 @@ Hence, there may be **slightly-improved training results** also.
 This repository is pip-installable, 
 
 ```
+$ pip install git+https://github.com/adverML/cutmix
 $ pip install git+https://github.com/ildoonet/cutmix
 ```
 
